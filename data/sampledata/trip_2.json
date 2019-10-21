@@ -1,0 +1,23 @@
+{
+  "id": 2,
+  "pilot": {
+    "name": "Admiral Ackbar",
+    "avatar": "/static/admiral-ackbar.png",
+    "rating": 0.0
+  },
+  "distance": {
+    "value": 24785727853,
+    "unit": "km"
+  },
+  "duration": 19427000,
+  "pick_up": {
+    "name": "Naboo",
+    "picture": "/static/naboo.png",
+    "date": "2017-12-09T14:12:51Z"
+  },
+  "drop_off": {
+    "name": "Coruscant",
+    "picture": "/static/coruscant.png",
+    "date": "2017-12-09T19:35:51Z"
+  }
+}
