@@ -19,7 +19,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.nio.charset.StandardCharsets
 
-
 class APIServiceTest {
 
     lateinit var service: APIService
