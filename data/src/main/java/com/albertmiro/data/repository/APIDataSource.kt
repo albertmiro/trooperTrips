@@ -2,28 +2,23 @@ package com.albertmiro.data.repository
 
 import com.albertmiro.data.api.APIService
 import com.albertmiro.data.entities.TripEntity
-import com.albertmiro.domain.repository.Result
 import io.reactivex.Single
 
 class APIDataSource(private val service: APIService) {
 
-    fun getTrips(): Result<Single<List<TripEntity>>> {
+    fun getTrips(): Pair<Single<List<TripEntity>>, Exception?> {
         return try {
-            val trips = service.getTrips()
-            Result.Success(trips)
+            service.getTrips() to null
         } catch (e: Exception) {
-            Result.Failure(e)
+            Single.just(emptyList<TripEntity>()) to e
         }
     }
 
-    fun getTripDetails(id: Int): Result<Single<TripEntity>> {
+    fun getTripDetails(id: Int): Pair<Single<TripEntity>, Exception?> {
         return try {
-            val tripDetail = service.getTripDetails(id)
-            Result.Success(tripDetail)
+            service.getTripDetails(id) to null
         } catch (e: Exception) {
-            Result.Failure(e)
+            Single.just(TripEntity.empty()) to e
         }
     }
 }
-
-

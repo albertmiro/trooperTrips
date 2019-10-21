@@ -1,6 +1,5 @@
-package com.albertmiro.data
+package com.albertmiro.data.api
 
-import com.albertmiro.data.api.APIService
 import com.albertmiro.data.entities.DistanceEntity
 import com.albertmiro.data.entities.LocationEntity
 import com.albertmiro.data.entities.PilotEntity

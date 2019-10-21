@@ -15,5 +15,18 @@ data class TripEntity(
     val pickUp: LocationEntity,
     @SerializedName("drop_off")
     val dropOff: LocationEntity
-)
+) {
+    companion object {
+        fun empty(): TripEntity {
+            return TripEntity(
+                -1,
+                PilotEntity("", "", .0),
+                DistanceEntity(-1, ""),
+                -1,
+                LocationEntity("", "", ""),
+                LocationEntity("", "", "")
+            )
+        }
+    }
+}
 
