@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 
 object BindTripUtils {
 
-    fun bindTrip(
+    fun bindTripItem(
         trip: Trip,
         avatarImage: ImageView,
         pilotName: TextView,
@@ -52,12 +52,12 @@ object BindTripUtils {
 
         Glide.with(pickUpPlanetImage.context)
             .load(getImagePath(trip.pickUp.picture))
-            .override(500,500)
+            .override(1000,1000)
             .into(pickUpPlanetImage)
 
         Glide.with(dropOffPlanetImage.context)
             .load(getImagePath(trip.dropOff.picture))
-            .override(500,500)
+            .override(1000,1000)
             .into(dropOffPlanetImage)
 
         pilotName.text = trip.pilot.name

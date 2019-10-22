@@ -16,7 +16,7 @@ class TripItemView constructor(context: Context) : RelativeLayout(context) {
     }
 
     fun bind(trip: Trip) {
-        BindTripUtils.bindTrip(trip, avatar, pilotName, pickUpLocation, dropOffLocation)
+        BindTripUtils.bindTripItem(trip, avatar, pilotName, pickUpLocation, dropOffLocation)
     }
 
 }

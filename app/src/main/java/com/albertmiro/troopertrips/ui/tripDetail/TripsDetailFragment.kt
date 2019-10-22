@@ -11,7 +11,6 @@ import com.albertmiro.troopertrips.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_trip_detail.*
 import kotlinx.android.synthetic.main.fragment_trips_list.progressBar
 import kotlinx.android.synthetic.main.fragment_trips_list.toolbar
-import kotlinx.android.synthetic.main.item_trip_avatar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TripsDetailFragment(private val tripId: Long) : BaseFragment(), TripsDetail.View {
@@ -70,7 +69,7 @@ class TripsDetailFragment(private val tripId: Long) : BaseFragment(), TripsDetai
     override fun showTrip(trip: Trip) {
         BindTripUtils.bindDetails(
             trip,
-            avatar,
+            avatarImage,
             pilotName,
             pickUpPlanetImage,
             pickUpPlanetName,
