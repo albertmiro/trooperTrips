@@ -11,12 +11,12 @@ object BindTripUtils {
     fun bindTrip(
         trip: Trip,
         avatarImage: ImageView,
-        piltoName: TextView,
+        pilotName: TextView,
         pickUpLocation: TextView,
         dropOffLocation: TextView
     ) {
         val avatarPath = getImagePath(trip.pilot.avatar)
-        piltoName.text = trip.pilot.name
+        pilotName.text = trip.pilot.name
         pickUpLocation.text = trip.pickUp.name
         dropOffLocation.text = trip.dropOff.name
         Glide.with(avatarImage.context)
@@ -26,7 +26,7 @@ object BindTripUtils {
 
     }
 
-    fun getImagePath(partialUrl: String): String {
+    private fun getImagePath(partialUrl: String): String {
         val baseImageUrl = "https://starwars.kapten.com"
         return "$baseImageUrl$partialUrl"
     }
