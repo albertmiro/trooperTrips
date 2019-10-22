@@ -18,4 +18,5 @@ dependencies {
     Buckets.baseAndroid.forEach { add(it.first, it.second) }
     Buckets.rxJava.forEach { add(it.first, it.second) }
     Buckets.testing.forEach { add(it.first, it.second) }
+    Buckets.koin.forEach { add(it.first, it.second) }
 }

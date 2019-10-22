@@ -16,6 +16,7 @@ object Versions {
     const val espresso_version = "3.2.0"
     const val mockito_kotlin_version = "2.2.0"
     const val leak_canary = "2.0-beta-3"
+    const val glideVersion = "4.10.0"
 
     const val test_runner_version = "1.0.1"
     const val junit_version = "4.12"
@@ -84,6 +85,10 @@ object Dependencies {
 
     val leakCanary =    "debugImplementation" to "com.squareup.leakcanary:leakcanary-android:${Versions.leak_canary}"
 
+    //Glide
+    val glide =         "implementation" to "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    val glideAP =       "annotationProcessor" to "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
+
 }
 
 object Buckets {
@@ -106,7 +111,9 @@ object Buckets {
             Dependencies.progressBar,
             Dependencies.googleMaps,
             Dependencies.recyclerview,
-            Dependencies.cardview
+            Dependencies.cardview,
+            Dependencies.glide,
+            Dependencies.glideAP
         )
 
     val baseAndroid =
@@ -150,4 +157,5 @@ object Buckets {
         listOf(
             Dependencies.leakCanary
         )
+
 }

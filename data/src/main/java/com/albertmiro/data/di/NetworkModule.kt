@@ -2,6 +2,10 @@ package com.albertmiro.data.di
 
 import com.albertmiro.data.BuildConfig
 import com.albertmiro.data.api.APIService
+import com.albertmiro.data.mapper.TripsMapper
+import com.albertmiro.data.repository.APIDataSource
+import com.albertmiro.data.repository.TripsRepositoryImpl
+import com.albertmiro.domain.repository.TripsRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.module.Module
@@ -29,8 +33,14 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 private val apiService = retrofit.create(APIService::class.java)
+private val mapper = TripsMapper()
 
 val networkModule: Module = module {
     single { apiService }
 }
 
+val repositoryModule: Module = module {
+    single { mapper }
+    single { APIDataSource(service = get()) }
+    single { TripsRepositoryImpl(dataSource = get(), mapper = get()) as TripsRepository }
+}

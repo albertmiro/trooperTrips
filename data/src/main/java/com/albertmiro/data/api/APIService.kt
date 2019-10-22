@@ -7,10 +7,10 @@ import retrofit2.http.Query
 
 interface APIService {
 
-    @GET(".")
+    @GET("trips")
     fun getTrips(): Single<List<TripEntity>>
 
-    @GET(".")
+    @GET("trips")
     fun getTripDetails(@Query("id") tripId: Int): Single<TripEntity>
 
 }
