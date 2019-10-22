@@ -1,7 +1,9 @@
 package com.albertmiro.troopertrips.ui.trips
 
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.albertmiro.domain.models.Trip
 import com.albertmiro.troopertrips.R
@@ -13,6 +15,7 @@ import com.albertmiro.troopertrips.ui.trips.adapter.TripsAdapter
 import com.albertmiro.troopertrips.ui.viewmodel.TripsViewModel
 import kotlinx.android.synthetic.main.fragment_trips_list.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
 
 class TripsListFragment : BaseFragment(), TripsList.View {
 
@@ -55,12 +58,22 @@ class TripsListFragment : BaseFragment(), TripsList.View {
     }
 
     private fun initList() {
+
         tripsList.apply {
             adapter = tripsAdapter
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(
                 context, LinearLayoutManager.VERTICAL, false
             )
+            val divider = ContextCompat.getDrawable(context, R.drawable.ic_center)
+            divider?.let {
+                val dividerItemDecoration = DividerItemDecoration(
+                    context,
+                    (layoutManager as LinearLayoutManager).orientation
+                )
+                dividerItemDecoration.setDrawable(divider)
+                addItemDecoration(dividerItemDecoration)
+            }
         }
     }
 
