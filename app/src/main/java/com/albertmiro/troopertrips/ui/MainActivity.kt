@@ -4,7 +4,6 @@ import android.os.Bundle
 import com.albertmiro.troopertrips.R
 import com.albertmiro.troopertrips.ui.base.BaseActivity
 import com.albertmiro.troopertrips.ui.viewmodel.TripsViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
@@ -17,7 +16,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
         loadTripsListFragment()
     }
 

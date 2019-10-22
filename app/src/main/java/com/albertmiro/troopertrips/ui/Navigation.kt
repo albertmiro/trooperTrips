@@ -1,6 +1,7 @@
 package com.albertmiro.troopertrips.ui
 
 import com.albertmiro.troopertrips.R
+import com.albertmiro.troopertrips.ui.tripDetail.TripsDetailFragment
 import com.albertmiro.troopertrips.ui.trips.TripsListFragment
 
 fun MainActivity.loadTripsListFragment() {
@@ -9,10 +10,10 @@ fun MainActivity.loadTripsListFragment() {
         .commit()
 }
 
-//fun MainActivity.loadTripDetailsFragment() {
-//    val vehiclesMapFragment = VehiclesMapFragment.newInstance()
-//    supportFragmentManager.beginTransaction()
-//        .addToBackStack(vehiclesMapFragment.javaClass.name)
-//        .replace(R.id.fragmentContainer, vehiclesMapFragment)
-//        .commit()
-//}
+fun MainActivity.loadTripDetailsFragment() {
+    val tripsDetailFragment = TripsDetailFragment.newInstance()
+    supportFragmentManager.beginTransaction()
+        .addToBackStack(tripsDetailFragment.javaClass.name)
+        .replace(R.id.fragmentContainer, tripsDetailFragment)
+        .commit()
+}

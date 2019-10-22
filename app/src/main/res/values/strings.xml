@@ -3,4 +3,5 @@
     <string name="unexpected_error">Ups! Something went wrong</string>
     <string name="lost_connection">Network connection lost</string>
     <string name="no_trips">No trips available</string>
+    <string name="last_trips">Last Trips</string>
 </resources>
