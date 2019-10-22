@@ -1,36 +1,34 @@
 package com.albertmiro.troopertrips.ui
 
-import android.content.Context
 import android.widget.ImageView
 import android.widget.TextView
 import com.albertmiro.domain.models.Trip
 import com.albertmiro.troopertrips.R
+import com.bumptech.glide.Glide
 
 object BindTripUtils {
 
     fun bindTrip(
-        vehicle: Trip,
-        vehicleHeader: TextView,
-        vehicleDescription: TextView,
-        vehicleImage: ImageView
+        trip: Trip,
+        avatarImage: ImageView,
+        piltoName: TextView,
+        pickUpLocation: TextView,
+        dropOffLocation: TextView
     ) {
-        val vehicleCapacity = (2).toLong()
-        val drawableId = R.drawable.ic_launcher_background
+        val avatarPath = getImagePath(trip.pilot.avatar)
+        piltoName.text = trip.pilot.name
+        pickUpLocation.text = trip.pickUp.name
+        dropOffLocation.text = trip.dropOff.name
+        Glide.with(avatarImage.context)
+            .load(avatarPath)
+            .placeholder(R.drawable.user_placeholder)
+            .into(avatarImage)
 
-        vehicleHeader.text = getFormattedString(
-            vehicleHeader.context,
-            R.string.app_name,
-            vehicle.id
-        )
-
-        vehicleDescription.text = getFormattedString(
-            vehicleDescription.context,
-            R.string.app_name,
-            vehicleCapacity
-        )
-        vehicleImage.setImageResource(drawableId)
     }
 
-    private fun getFormattedString(context: Context, stringId: Int, value: Long): String =
-        String.format(context.getString(stringId), value)
+    fun getImagePath(partialUrl: String): String {
+        val baseImageUrl = "https://starwars.kapten.com"
+        return "$baseImageUrl$partialUrl"
+    }
+
 }
