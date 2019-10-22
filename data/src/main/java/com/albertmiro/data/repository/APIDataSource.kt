@@ -14,7 +14,7 @@ class APIDataSource(private val service: APIService) {
         }
     }
 
-    fun getTripDetails(id: Int): Pair<Single<TripEntity>, Exception?> {
+    fun getTripDetails(id: Long): Pair<Single<TripEntity>, Exception?> {
         return try {
             service.getTripDetails(id) to null
         } catch (e: Exception) {

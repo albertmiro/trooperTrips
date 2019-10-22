@@ -1,31 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    tools:background="@drawable/background"
-    android:layout_height="@dimen/cellHeight">
-
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:cropToPadding="false"
-        android:padding="16dp"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/user_admiral_ackbar" />
-
-    <Space
-        android:id="@+id/spacer"
-        android:layout_width="16dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/avatar"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/cellHeight"
+    tools:background="@drawable/background">
 
     <TextView
         android:id="@+id/pilotName"
@@ -38,7 +18,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/pickUpLocation"
-        app:layout_constraintStart_toEndOf="@+id/spacer"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Ackbar" />
 
@@ -52,7 +32,7 @@
         android:textSize="14sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spacer"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pilotName"
         tools:text="Naboo" />
 
@@ -70,8 +50,8 @@
     <TextView
         android:id="@+id/dropOffLocation"
         android:layout_width="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/roboto_medium"
         android:lineSpacingExtra="2sp"
         android:textColor="@color/warm_grey"

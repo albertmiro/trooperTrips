@@ -12,16 +12,15 @@ import com.albertmiro.troopertrips.extensions.showMessage
 import com.albertmiro.troopertrips.ui.base.BaseFragment
 import com.albertmiro.troopertrips.ui.loadTripDetailsFragment
 import com.albertmiro.troopertrips.ui.trips.adapter.TripsAdapter
-import com.albertmiro.troopertrips.ui.viewmodel.TripsViewModel
 import kotlinx.android.synthetic.main.fragment_trips_list.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class TripsListFragment : BaseFragment(), TripsList.View {
 
     override val layoutId: Int = R.layout.fragment_trips_list
 
-    private val tripsViewModel: TripsViewModel by sharedViewModel()
+    private val tripsViewModel: TripsViewModel by viewModel()
 
     private lateinit var tripsAdapter: TripsAdapter
 
@@ -51,8 +50,7 @@ class TripsListFragment : BaseFragment(), TripsList.View {
     private fun initAdapter() {
         tripsAdapter = TripsAdapter().apply {
             onClickAction = {
-                tripsViewModel.setCurrentTripId(it.id)
-                mainActivity.loadTripDetailsFragment()
+                mainActivity.loadTripDetailsFragment(it.id)
             }
         }
     }
