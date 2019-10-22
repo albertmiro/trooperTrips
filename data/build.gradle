@@ -13,11 +13,11 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField 'String', 'BASE_URL', '"https://my-json-server.typicode.com/albertmiro/mock-json-starwars"'
+            buildConfigField 'String', 'BASE_URL', '"https://my-json-server.typicode.com/albertmiro/mock-json-starwars/"'
         }
 
         release {
-            buildConfigField 'String', 'BASE_URL', '"https://starwars.kapten.com/trips"'
+            buildConfigField 'String', 'BASE_URL', '"https://starwars.kapten.com/trips/"'
         }
     }
 
