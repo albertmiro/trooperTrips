@@ -48,16 +48,17 @@ object BindTripUtils {
         Glide.with(avatarImage.context)
             .load(getImagePath(trip.pilot.avatar))
             .placeholder(R.drawable.user_placeholder)
+            .override(220,220)
             .into(avatarImage)
 
         Glide.with(pickUpPlanetImage.context)
             .load(getImagePath(trip.pickUp.picture))
-            .override(1000,1000)
+            .override(600,600)
             .into(pickUpPlanetImage)
 
         Glide.with(dropOffPlanetImage.context)
             .load(getImagePath(trip.dropOff.picture))
-            .override(1000,1000)
+            .override(600,600)
             .into(dropOffPlanetImage)
 
         pilotName.text = trip.pilot.name
