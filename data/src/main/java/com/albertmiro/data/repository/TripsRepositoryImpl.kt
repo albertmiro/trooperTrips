@@ -15,7 +15,7 @@ class TripsRepositoryImpl(
         return trips.first.map { mapper.toTripList(it) }
     }
 
-    override fun getTripDetail(id: Int): Single<Trip> {
+    override fun getTripDetail(id: Long): Single<Trip> {
         val trip = dataSource.getTripDetails(id)
         return trip.first.map { mapper.toTrip(it) }
     }

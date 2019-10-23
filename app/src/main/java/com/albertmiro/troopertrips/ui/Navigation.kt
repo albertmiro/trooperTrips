@@ -10,8 +10,8 @@ fun MainActivity.loadTripsListFragment() {
         .commit()
 }
 
-fun MainActivity.loadTripDetailsFragment() {
-    val tripsDetailFragment = TripsDetailFragment.newInstance()
+fun MainActivity.loadTripDetailsFragment(tripId : Long) {
+    val tripsDetailFragment = TripsDetailFragment.newInstance(tripId)
     supportFragmentManager.beginTransaction()
         .addToBackStack(tripsDetailFragment.javaClass.name)
         .replace(R.id.fragmentContainer, tripsDetailFragment)

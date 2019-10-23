@@ -20,7 +20,7 @@ data class TripEntity(
         fun empty(): TripEntity {
             return TripEntity(
                 -1,
-                PilotEntity("", "", .0),
+                PilotEntity("", "", 0f),
                 DistanceEntity(-1, ""),
                 -1,
                 LocationEntity("", "", ""),

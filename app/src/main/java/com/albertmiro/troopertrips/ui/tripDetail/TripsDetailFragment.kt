@@ -6,20 +6,22 @@ import com.albertmiro.domain.models.Trip
 import com.albertmiro.troopertrips.R
 import com.albertmiro.troopertrips.extensions.isVisible
 import com.albertmiro.troopertrips.extensions.showMessage
+import com.albertmiro.troopertrips.ui.BindTripUtils
 import com.albertmiro.troopertrips.ui.base.BaseFragment
-import com.albertmiro.troopertrips.ui.viewmodel.TripsViewModel
-import kotlinx.android.synthetic.main.fragment_trips_list.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import kotlinx.android.synthetic.main.fragment_trip_detail.*
+import kotlinx.android.synthetic.main.fragment_trips_list.progressBar
+import kotlinx.android.synthetic.main.fragment_trips_list.toolbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TripsDetailFragment : BaseFragment(), TripsDetail.View {
+class TripsDetailFragment(private val tripId: Long) : BaseFragment(), TripsDetail.View {
 
     override val layoutId: Int = R.layout.fragment_trip_detail
 
-    private val tripsViewModel: TripsViewModel by sharedViewModel()
+    private val tripDetailsViewModel: TripsDetailViewModel by viewModel()
 
     companion object {
-        fun newInstance(): TripsDetailFragment {
-            return TripsDetailFragment()
+        fun newInstance(id: Long): TripsDetailFragment {
+            return TripsDetailFragment(id)
         }
     }
 
@@ -29,7 +31,7 @@ class TripsDetailFragment : BaseFragment(), TripsDetail.View {
         showBackOnToolbar()
         initObservers()
 
-        tripsViewModel.loadTrips(false)
+        tripDetailsViewModel.getTripDetails(tripId)
     }
 
     private fun showBackOnToolbar() {
@@ -41,11 +43,11 @@ class TripsDetailFragment : BaseFragment(), TripsDetail.View {
     }
 
     private fun initObservers() {
-        tripsViewModel.isDataLoading()
+        tripDetailsViewModel.isDataLoading()
             .observe(this, Observer { changeProgressBarVisibility(it) })
-        tripsViewModel.getTrips().observe(this, Observer { showTrips(it) })
-        tripsViewModel.isNetworkError().observe(this, Observer { onNetworkError(it) })
-        tripsViewModel.isUnknownError().observe(this, Observer { onUnknownError(it) })
+        tripDetailsViewModel.getTrip().observe(this, Observer { showTrip(it) })
+        tripDetailsViewModel.isNetworkError().observe(this, Observer { onNetworkError(it) })
+        tripDetailsViewModel.isUnknownError().observe(this, Observer { onUnknownError(it) })
     }
 
     override fun onUnknownError(isUnknownError: Boolean) {
@@ -60,13 +62,25 @@ class TripsDetailFragment : BaseFragment(), TripsDetail.View {
         }
     }
 
-    override fun changeProgressBarVisibility(isDataLoaded: Boolean) {
-        progressBar.isVisible(isDataLoaded)
+    override fun changeProgressBarVisibility(isVisible: Boolean) {
+        progressBar.isVisible(isVisible)
     }
 
-    override fun showTrips(trips: List<Trip>) {
-        if (trips.isEmpty()) {
-            context?.showMessage(getString(R.string.no_trips))
-        }
+    override fun showTrip(trip: Trip) {
+        BindTripUtils.bindDetails(
+            trip,
+            avatarImage,
+            pilotName,
+            pickUpPlanetImage,
+            pickUpPlanetName,
+            pickUpPlanetTime,
+            dropOffPlanetImage,
+            dropOffPlanetName,
+            dropOffPlanetTime,
+            tripDistance,
+            tripDuration,
+            ratingBar,
+            noRatingAvailable
+        )
     }
 }

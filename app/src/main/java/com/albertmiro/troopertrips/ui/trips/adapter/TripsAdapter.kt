@@ -13,10 +13,10 @@ class TripsAdapter : RecyclerViewAdapterBase<Trip, TripItemView>() {
         TripItemView(context = parent.context)
 
     override fun onBindViewHolder(holder: ViewWrapper<TripItemView>, position: Int) {
-        val taxi = items[position]
+        val trip = items[position]
 
         holder.view.apply {
-            bind(taxi)
+            bind(trip)
         }
 
         holder.view.setOnClickListener {

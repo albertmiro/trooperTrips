@@ -8,5 +8,5 @@ data class PilotEntity(
     @SerializedName("avatar")
     val avatar: String,
     @SerializedName("rating")
-    val rating: Double
+    val rating: Float
 )

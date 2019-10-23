@@ -1,22 +1,21 @@
-package com.albertmiro.troopertrips.ui.viewmodel
+package com.albertmiro.troopertrips.ui.trips
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.albertmiro.domain.models.Trip
 import com.albertmiro.domain.usecases.GetTrips
 import com.albertmiro.troopertrips.ui.base.viewmodel.BaseViewModel
-import com.albertmiro.troopertrips.ui.trips.TripsList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.net.UnknownHostException
 
-class TripsViewModel(val getTrips: GetTrips) : BaseViewModel(), TripsList.ViewModel {
+class TripsViewModel(val getTrips: GetTrips) : BaseViewModel(),
+    TripsList.ViewModel {
 
     var isDataLoading: MutableLiveData<Boolean> = MutableLiveData()
     var isNetworkError: MutableLiveData<Boolean> = MutableLiveData()
     var isUnknownError: MutableLiveData<Boolean> = MutableLiveData()
     var trips: MutableLiveData<List<Trip>> = MutableLiveData()
-    var tripId: MutableLiveData<Long> = MutableLiveData()
 
     override fun isDataLoading(): LiveData<Boolean> = isDataLoading
 
@@ -24,11 +23,7 @@ class TripsViewModel(val getTrips: GetTrips) : BaseViewModel(), TripsList.ViewMo
 
     override fun isUnknownError(): LiveData<Boolean> = isUnknownError
 
-    override fun setCurrentTripId(tripId: Long) = this.tripId.postValue(tripId)
-
     override fun getTrips(): LiveData<List<Trip>> = trips
-
-    override fun getCurrentTripId() = tripId
 
     override fun loadTrips(forceRefresh: Boolean) {
         compositeDisposable.add(getTrips.invoke(forceRefresh)
