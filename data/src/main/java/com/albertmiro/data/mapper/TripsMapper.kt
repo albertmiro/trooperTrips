@@ -57,7 +57,7 @@ class TripsMapper : Mapper {
     private fun parseTimeInMillis(timeInMillis: Long): String {
         val time = Date(timeInMillis)
         val formatter = SimpleDateFormat("H:mm:ss", Locale.getDefault())
-        var formattedTime: String? = null
+        var formattedTime: String?
         try {
             formattedTime = formatter.format(time)
         } catch (e: ParseException) {

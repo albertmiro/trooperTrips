@@ -62,8 +62,8 @@ class TripsDetailFragment(private val tripId: Long) : BaseFragment(), TripsDetai
         }
     }
 
-    override fun changeProgressBarVisibility(isDataLoaded: Boolean) {
-        progressBar.isVisible(isDataLoaded)
+    override fun changeProgressBarVisibility(isVisible: Boolean) {
+        progressBar.isVisible(isVisible)
     }
 
     override fun showTrip(trip: Trip) {
@@ -79,7 +79,8 @@ class TripsDetailFragment(private val tripId: Long) : BaseFragment(), TripsDetai
             dropOffPlanetTime,
             tripDistance,
             tripDuration,
-            ratingBar
+            ratingBar,
+            noRatingAvailable
         )
     }
 }

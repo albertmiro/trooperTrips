@@ -24,9 +24,9 @@
         android:id="@+id/planets"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="-50dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="-50dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <androidx.constraintlayout.widget.Guideline
@@ -100,10 +100,10 @@
             android:id="@+id/avatarImage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:layout_marginBottom="24dp"
-            android:layout_marginTop="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -341,11 +341,25 @@
             android:numStars="5"
             android:progress="0"
             android:progressDrawable="@drawable/custom_rating_bar"
-            android:rating="3.5"
+            android:rating="0"
             android:stepSize="0.1"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/avatar_layout" />
 
+        <TextView
+            android:id="@+id/noRatingAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.21"
+            android:text="User didn’t rate yet"
+            android:textColor="@color/warm_grey"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/avatar_layout" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

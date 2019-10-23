@@ -5,6 +5,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import com.albertmiro.domain.models.Trip
 import com.albertmiro.troopertrips.R
+import com.albertmiro.troopertrips.extensions.isVisible
 import com.bumptech.glide.Glide
 
 object BindTripUtils {
@@ -43,7 +44,8 @@ object BindTripUtils {
         dropOffPlanetTime: TextView,
         tripDistance: TextView,
         tripDuration: TextView,
-        ratingBar: RatingBar
+        ratingBar: RatingBar,
+        noRatingAvailable : TextView
     ) {
         Glide.with(avatarImage.context)
             .load(getImagePath(trip.pilot.avatar))
@@ -67,7 +69,14 @@ object BindTripUtils {
         dropOffPlanetName.text = trip.dropOff.name
         dropOffPlanetTime.text = trip.dropOff.date
         tripDistance.text = trip.distance
-        tripDuration.text = trip.duration.toString()
-        ratingBar.rating = trip.pilot.rating.toFloat()
+        tripDuration.text = trip.duration
+        if(trip.pilot.rating > 0) {
+            ratingBar.rating = trip.pilot.rating
+            noRatingAvailable.isVisible(false)
+            ratingBar.isVisible(true)
+        } else {
+            ratingBar.isVisible(false)
+            noRatingAvailable.isVisible(true)
+        }
     }
 }
