@@ -9,24 +9,22 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.net.UnknownHostException
 
-class TripsDetailViewModel(val getTripDetails: GetTripDetails) :
-    BaseViewModel(),
-    TripsDetail.ViewModel {
+class TripsDetailViewModel(val getTripDetails: GetTripDetails) : BaseViewModel() {
 
-    var isDataLoading: MutableLiveData<Boolean> = MutableLiveData()
-    var isNetworkError: MutableLiveData<Boolean> = MutableLiveData()
-    var isUnknownError: MutableLiveData<Boolean> = MutableLiveData()
-    var trip: MutableLiveData<Trip> = MutableLiveData()
+    private var isDataLoading: MutableLiveData<Boolean> = MutableLiveData()
+    private var isNetworkError: MutableLiveData<Boolean> = MutableLiveData()
+    private var isUnknownError: MutableLiveData<Boolean> = MutableLiveData()
+    private var trip: MutableLiveData<Trip> = MutableLiveData()
 
-    override fun isDataLoading(): LiveData<Boolean> = isDataLoading
+    fun isDataLoading(): LiveData<Boolean> = isDataLoading
 
-    override fun isNetworkError(): LiveData<Boolean> = isNetworkError
+    fun isNetworkError(): LiveData<Boolean> = isNetworkError
 
-    override fun isUnknownError(): LiveData<Boolean> = isUnknownError
+    fun isUnknownError(): LiveData<Boolean> = isUnknownError
 
-    override fun getTrip(): LiveData<Trip> = trip
+    fun getTrip(): LiveData<Trip> = trip
 
-    override fun getTripDetails(id: Long) {
+    fun getTripDetails(id: Long) {
         compositeDisposable.add(getTripDetails.invoke(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -37,14 +35,14 @@ class TripsDetailViewModel(val getTripDetails: GetTripDetails) :
             ))
     }
 
-    override fun onSuccess(result: Trip) {
+    private fun onSuccess(result: Trip) {
         trip.postValue(result)
         isDataLoading.postValue(false)
         isNetworkError.postValue(false)
         isUnknownError.postValue(false)
     }
 
-    override fun onError(error: Throwable?) {
+    private fun onError(error: Throwable?) {
         isDataLoading.postValue(false)
         when (error) {
             is UnknownHostException -> isNetworkError.postValue(true)
