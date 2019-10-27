@@ -4,4 +4,10 @@
     <string name="lost_connection">Network connection lost</string>
     <string name="no_trips">No trips available</string>
     <string name="last_trips">Last Trips</string>
+    <string name="departure">Departure</string>
+    <string name="arrival">Arrival</string>
+    <string name="trip_distance">Trip Distance</string>
+    <string name="trip_duration">Trip Duration</string>
+    <string name="pilot_rating">Pilot Rating</string>
+    <string name="user_didn_t_rate_yet">User didn’t rate yet</string>
 </resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <LinearLayout
+        android:id="@+id/ratingLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeftSpace"
+        app:layout_constraintTop_toBottomOf="@id/tripDistanceLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin8"
+            android:fontFamily="sans-serif-medium"
+            android:lineSpacingExtra="@dimen/lineSpacing"
+            android:text="@string/pilot_rating"
+            android:textColor="@color/warm_grey"
+            android:textSize="@dimen/text14sp"
+            android:textStyle="normal" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/rating_bar_height"
+            android:foregroundGravity="center"
+            android:isIndicator="true"
+            android:max="5"
+            android:numStars="5"
+            android:progress="0"
+            android:progressDrawable="@drawable/custom_rating_bar"
+            android:rating="0"
+            android:stepSize="0.1"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/avatar_layout" />
+
+        <TextView
+            android:id="@+id/noRatingAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.21"
+            android:text="@string/user_didn_t_rate_yet"
+            android:textColor="@color/warm_grey"
+            android:textSize="@dimen/text14sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/avatar_layout" />
+    </LinearLayout>
+
+</merge>

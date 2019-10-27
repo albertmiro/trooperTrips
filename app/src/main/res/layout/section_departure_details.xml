@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <LinearLayout
+        android:id="@+id/departureDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin24"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeftSpace"
+        app:layout_constraintTop_toBottomOf="@id/contentAvatarDivider">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:lineSpacingExtra="@dimen/lineSpacing"
+            android:text="@string/departure"
+            android:textColor="@color/warm_grey"
+            android:textSize="@dimen/text14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/pickUpPlanetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.19"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text16sp"
+            android:textStyle="bold"
+            tools:text="Yavin 4" />
+
+        <TextView
+            android:id="@+id/pickUpPlanetTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.19"
+            android:textAllCaps="true"
+            android:textColor="@color/warm_grey"
+            android:textSize="@dimen/text16sp"
+            android:textStyle="bold"
+            tools:text="2:12 PM" />
+    </LinearLayout>
+
+</merge>
