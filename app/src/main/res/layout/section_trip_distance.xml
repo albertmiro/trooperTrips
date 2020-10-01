@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <LinearLayout
+        android:id="@+id/tripDistanceLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/ratingLayout"
+        app:layout_constraintEnd_toStartOf="@+id/tripDurationLayout"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeftSpace"
+        app:layout_constraintTop_toBottomOf="@id/departureDetails">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:lineSpacingExtra="@dimen/lineSpacing"
+            android:text="@string/trip_distance"
+            android:textColor="@color/warm_grey"
+            android:textSize="@dimen/text14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/tripDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.19"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text16sp"
+            android:textStyle="bold"
+            tools:text="2,478,572 KM" />
+
+    </LinearLayout>
+
+</merge>

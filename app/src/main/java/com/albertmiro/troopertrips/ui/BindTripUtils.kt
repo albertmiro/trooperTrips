@@ -15,7 +15,8 @@ object BindTripUtils {
         avatarImage: ImageView,
         pilotName: TextView,
         pickUpLocation: TextView,
-        dropOffLocation: TextView
+        dropOffLocation: TextView,
+        ratingBar: RatingBar? = null
     ) {
         val avatarPath = getImagePath(trip.pilot.avatar)
         pilotName.text = trip.pilot.name
@@ -25,6 +26,8 @@ object BindTripUtils {
             .load(avatarPath)
             .placeholder(R.drawable.user_placeholder)
             .into(avatarImage)
+
+        ratingBar?.let { it.rating = trip.pilot.rating }
     }
 
     private fun getImagePath(partialUrl: String): String {
@@ -36,31 +39,31 @@ object BindTripUtils {
         trip: Trip,
         avatarImage: ImageView,
         pilotName: TextView,
-        pickUpPlanetImage :ImageView,
+        pickUpPlanetImage: ImageView,
         pickUpPlanetName: TextView,
         pickUpPlanetTime: TextView,
-        dropOffPlanetImage :ImageView,
+        dropOffPlanetImage: ImageView,
         dropOffPlanetName: TextView,
         dropOffPlanetTime: TextView,
         tripDistance: TextView,
         tripDuration: TextView,
         ratingBar: RatingBar,
-        noRatingAvailable : TextView
+        noRatingAvailable: TextView
     ) {
         Glide.with(avatarImage.context)
             .load(getImagePath(trip.pilot.avatar))
             .placeholder(R.drawable.user_placeholder)
-            .override(220,220)
+            .override(220, 220)
             .into(avatarImage)
 
         Glide.with(pickUpPlanetImage.context)
             .load(getImagePath(trip.pickUp.picture))
-            .override(600,600)
+            .override(600, 600)
             .into(pickUpPlanetImage)
 
         Glide.with(dropOffPlanetImage.context)
             .load(getImagePath(trip.dropOff.picture))
-            .override(600,600)
+            .override(600, 600)
             .into(dropOffPlanetImage)
 
         pilotName.text = trip.pilot.name
@@ -70,7 +73,8 @@ object BindTripUtils {
         dropOffPlanetTime.text = trip.dropOff.date
         tripDistance.text = trip.distance
         tripDuration.text = trip.duration
-        if(trip.pilot.rating > 0) {
+
+        if (trip.pilot.rating > 0) {
             ratingBar.rating = trip.pilot.rating
             noRatingAvailable.isVisible(false)
             ratingBar.isVisible(true)

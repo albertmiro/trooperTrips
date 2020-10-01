@@ -7,13 +7,14 @@ import com.albertmiro.troopertrips.R
 import com.albertmiro.troopertrips.extensions.isVisible
 import com.albertmiro.troopertrips.extensions.showMessage
 import com.albertmiro.troopertrips.ui.BindTripUtils
+import com.albertmiro.troopertrips.ui.MainActivity
 import com.albertmiro.troopertrips.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_trip_detail.*
 import kotlinx.android.synthetic.main.fragment_trips_list.progressBar
 import kotlinx.android.synthetic.main.fragment_trips_list.toolbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TripsDetailFragment(private val tripId: Long) : BaseFragment(), TripsDetail.View {
+class TripsDetailFragment(private val tripId: Long) : BaseFragment() {
 
     override val layoutId: Int = R.layout.fragment_trip_detail
 
@@ -35,7 +36,8 @@ class TripsDetailFragment(private val tripId: Long) : BaseFragment(), TripsDetai
     }
 
     private fun showBackOnToolbar() {
-        with(mainActivity) {
+        val mainActivity = (context as? MainActivity)
+        mainActivity?.apply {
             setSupportActionBar(toolbar)
             supportActionBar?.setDisplayShowTitleEnabled(false)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -50,23 +52,23 @@ class TripsDetailFragment(private val tripId: Long) : BaseFragment(), TripsDetai
         tripDetailsViewModel.isUnknownError().observe(this, Observer { onUnknownError(it) })
     }
 
-    override fun onUnknownError(isUnknownError: Boolean) {
+    fun onUnknownError(isUnknownError: Boolean) {
         if (isUnknownError) {
             context?.showMessage(getString(R.string.unexpected_error))
         }
     }
 
-    override fun onNetworkError(isNetworkError: Boolean) {
+    fun onNetworkError(isNetworkError: Boolean) {
         if (isNetworkError) {
             context?.showMessage(getString(R.string.lost_connection))
         }
     }
 
-    override fun changeProgressBarVisibility(isVisible: Boolean) {
+    fun changeProgressBarVisibility(isVisible: Boolean) {
         progressBar.isVisible(isVisible)
     }
 
-    override fun showTrip(trip: Trip) {
+    fun showTrip(trip: Trip) {
         BindTripUtils.bindDetails(
             trip,
             avatarImage,

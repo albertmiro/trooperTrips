@@ -1,10 +1,10 @@
 package com.albertmiro.troopertrips.ui
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.albertmiro.troopertrips.R
-import com.albertmiro.troopertrips.ui.base.BaseActivity
 
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

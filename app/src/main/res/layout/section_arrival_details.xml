@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <LinearLayout
+        android:id="@+id/arrivalDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin24"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/departureDetails"
+        app:layout_constraintStart_toEndOf="@+id/departureDetails"
+        app:layout_constraintTop_toBottomOf="@id/contentAvatarDivider">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:lineSpacingExtra="@dimen/lineSpacing"
+            android:text="@string/arrival"
+            android:textColor="@color/warm_grey"
+            android:textSize="@dimen/text14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/dropOffPlanetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.19"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/text16sp"
+            android:textStyle="bold"
+            tools:text="Naboo" />
+
+        <TextView
+            android:id="@+id/dropOffPlanetTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.19"
+            android:textAllCaps="true"
+            android:textColor="@color/warm_grey"
+            android:textSize="@dimen/text16sp"
+            android:textStyle="bold"
+            tools:text="7:35 PM" />
+    </LinearLayout>
+
+</merge>

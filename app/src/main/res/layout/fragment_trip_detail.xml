@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
@@ -20,57 +19,14 @@
         layout="@layout/progress_bar"
         android:visibility="gone" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/planets"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="-50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineBig"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.4" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.25" />
-
-        <ImageView
-            android:id="@+id/pickUpPlanetImage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guidelineBig"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/planet_coruscant" />
-
-        <ImageView
-            android:id="@+id/dropOffPlanetImage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            app:layout_constraintLeft_toRightOf="@+id/guidelineSmall"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/planet_earth" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/detail_planets_header" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLeftSpace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp" />
+        app:layout_constraintGuide_begin="@dimen/screenStartMargin" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelinePlanets"
@@ -87,279 +43,28 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guidelinePlanets" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/avatarConstraint"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeftSpace"
-        app:layout_constraintTop_toBottomOf="@id/guidelinePlanets">
-
-        <ImageView
-            android:id="@+id/avatarImage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/user_placeholder" />
-
-        <Space
-            android:id="@+id/spacer"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/avatarImage"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/pilotName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:gravity="left"
-            android:letterSpacing="0.31"
-            android:lineSpacingExtra="0sp"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/avatarImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/spacer"
-            app:layout_constraintStart_toEndOf="@+id/spacer"
-            app:layout_constraintTop_toTopOf="@+id/avatarImage"
-            tools:text="Dark vador" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <include layout="@layout/section_detail_avatar" />
 
     <ImageView
-        android:id="@+id/pilotDivider"
+        android:id="@+id/contentAvatarDivider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="@dimen/margin5"
+        android:layout_marginRight="@dimen/margin5"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatarConstraint"
         app:srcCompat="@drawable/ic_center" />
 
-    <LinearLayout
-        android:id="@+id/departureDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeftSpace"
-        app:layout_constraintTop_toBottomOf="@id/pilotDivider">
+    <include layout="@layout/section_departure_details" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="2sp"
-            android:text="Departure"
-            android:textColor="@color/warm_grey"
-            android:textSize="14sp"
-            android:textStyle="normal" />
+    <include layout="@layout/section_arrival_details" />
 
-        <TextView
-            android:id="@+id/pickUpPlanetName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.19"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="Yavin 4" />
+    <include layout="@layout/section_trip_distance" />
 
-        <TextView
-            android:id="@+id/pickUpPlanetTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.19"
-            android:textAllCaps="true"
-            android:textColor="@color/warm_grey"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="2:12 PM" />
-    </LinearLayout>
+    <include layout="@layout/section_trip_duration" />
 
-    <LinearLayout
-        android:id="@+id/arrivalDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/departureDetails"
-        app:layout_constraintStart_toEndOf="@+id/departureDetails"
-        app:layout_constraintTop_toBottomOf="@id/pilotDivider">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="2sp"
-            android:text="Arrival"
-            android:textColor="@color/warm_grey"
-            android:textSize="14sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/dropOffPlanetName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.19"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="Naboo" />
-
-        <TextView
-            android:id="@+id/dropOffPlanetTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.19"
-            android:textAllCaps="true"
-            android:textColor="@color/warm_grey"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="7:35 PM" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/tripDistanceLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toStartOf="@+id/tripDurationLayout"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeftSpace"
-        app:layout_constraintTop_toBottomOf="@id/departureDetails">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="2sp"
-            android:text="Trip Distance"
-            android:textColor="@color/warm_grey"
-            android:textSize="14sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/tripDistance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.19"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="2,478,572 KM" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/tripDurationLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/arrivalDetails"
-        app:layout_constraintTop_toBottomOf="@+id/arrivalDetails">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="2sp"
-            android:text="Trip Duration"
-            android:textColor="@color/warm_grey"
-            android:textSize="14sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/tripDuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.19"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="5:23:47" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guidelineLeftSpace"
-        app:layout_constraintTop_toBottomOf="@id/tripDistanceLayout">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:lineSpacingExtra="2sp"
-            android:text="Pilot Rating"
-            android:textColor="@color/warm_grey"
-            android:textSize="14sp"
-            android:textStyle="normal" />
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:foregroundGravity="center"
-            android:isIndicator="true"
-            android:max="5"
-            android:numStars="5"
-            android:progress="0"
-            android:progressDrawable="@drawable/custom_rating_bar"
-            android:rating="0"
-            android:stepSize="0.1"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/avatar_layout" />
-
-        <TextView
-            android:id="@+id/noRatingAvailable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.21"
-            android:text="User didn’t rate yet"
-            android:textColor="@color/warm_grey"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/avatar_layout" />
-    </LinearLayout>
+    <include layout="@layout/section_rating" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
